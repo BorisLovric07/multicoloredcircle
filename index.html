@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment: Multicolored Circle Animation</title>
+
+    <!--
+
+ Za realizaciju prikazane animacije, potrebno je upotrebiti sledeće pojmove CSS jezika:
+
+linearni gradijenti;
+filteri;
+CSS animacije;
+2D CSS transformacije;
+Pseudoelementi.
+
+Boje koje su korišćene za realizaciju prikazanog primera su:
+
+na krugu - #fb5dad, #55fb9f, #b97aff;
+boja pozadine - #050210.
+
+Obratite pažnju na to da je glow iza animiranog kruga sačinjen iz više boja, koje prate boje kruga.
+
+-->
+
+    <style>
+
+ body {
+     margin: 10vh;
+     padding: 10vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: #050210;
+ }
+
+    /*Vanjski krug i animacija*/
+    .circle {
+        position: relative;
+        width: 60vh;
+        height: 60vh;
+        background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+        border-radius: 50%;
+        animation: animate 0.5s linear infinite;
+        }
+
+    /*Animacijska Mehanika*/
+    @keyframes animate {
+        from{
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /*Unutrašnji krug*/
+    .circle::after {
+        content: '';
+        position: absolute;
+        top: 35px;
+        right: 35px;
+        bottom: 35px;
+        left: 35px;
+        border-radius: 50%;
+        background: #050210;
+    }
+
+    /*Dorada Efekata*/
+    .circle span{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+        border-radius: 50%;
+    }
+
+    .circle span:nth-child(1) {
+        filter: blur(5px);
+    }
+
+    .circle span:nth-child(2) {
+        filter: blur(10px);
+    }
+
+    .circle span:nth-child(3) {
+        filter: blur(20px);
+    }
+
+    .circle span:nth-child(4) {
+        filter: blur(55px);
+    }
+
+    </style>
+
+</head>
+<body>
+    
+<div class="circle">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+</body>
+</html>
